@@ -1,49 +1,58 @@
 # Python CI/CD Learning Project
 
-A simple To-do API built with Flask to practice CI/CD step by step.
+A simple **To-do API** built with **Flask** to practice **CI/CD** step by step.
+
+## Project goal
+
+This project is used to learn and apply:
+
+- Git and GitHub
+- Python API development with Flask
+- automated testing with pytest
+- CI/CD with GitHub Actions
+- Docker
+- staging and deployment concepts
+
+---
 
 ## Features
-- Check if the API is running
-- Get all todos
-- Get one todo by ID
-- Create a new todo
 
-## Tech stack
-- Python
-- Flask
-- pytest
-- Git
-- GitHub
-
-## Project structure
-- `src/` — application code
-- `tests/` — automated tests
-- `docs/` — daily learning notes
-
-## API routes
-
-### `GET /`
-Returns a simple message showing the API is running.
-
-### `GET /todos`
-Returns the list of todos.
-
-### `GET /todos/<id>`
-Returns one todo by ID.
-
-### `POST /todos`
-Creates a new todo.
-
-Example request body:
-```json
-{
-  "title": "Learn Docker"
-}
-
-## Features
 - Check if the API is running
 - Get all todos
 - Get one todo by ID
 - Create a new todo
 - Update a todo
 - Delete a todo
+
+---
+
+## Tech stack
+
+- Python
+- Flask
+- pytest
+- Git
+- GitHub
+
+---
+
+## Project structure
+
+```text
+python-ci-cd-learning/
+│
+├── src/
+│   ├── __init__.py
+│   └── app.py
+│
+├── tests/
+│   └── test_app.py
+│
+├── docs/
+│   ├── day3.md
+│   ├── day4.md
+│   └── day5.md
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
