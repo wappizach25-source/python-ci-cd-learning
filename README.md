@@ -39,3 +39,11 @@ Example request body:
 {
   "title": "Learn Docker"
 }
+
+## Features
+- Check if the API is running
+- Get all todos
+- Get one todo by ID
+- Create a new todo
+- Update a todo
+- Delete a todo

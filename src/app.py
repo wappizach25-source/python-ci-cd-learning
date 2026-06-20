@@ -47,5 +47,41 @@ def create_todo():
     return jsonify(new_todo), 201
 
 
+@app.route("/todos/<int:todo_id>", methods=["PATCH"])
+def update_todo(todo_id):
+    todo = next((todo for todo in todos if todo["id"] == todo_id), None)
+
+    if todo is None:
+        return jsonify({"error": "Todo not found"}), 404
+
+    data = request.get_json()
+
+    if not data:
+        return jsonify({"error": "Request body is required"}), 400
+
+    if "title" in data:
+        if not isinstance(data["title"], str) or not data["title"].strip():
+            return jsonify({"error": "Title cannot be empty"}), 400
+        todo["title"] = data["title"].strip()
+
+    if "done" in data:
+        if not isinstance(data["done"], bool):
+            return jsonify({"error": "Done must be a boolean"}), 400
+        todo["done"] = data["done"]
+
+    return jsonify(todo)
+
+
+@app.route("/todos/<int:todo_id>", methods=["DELETE"])
+def delete_todo(todo_id):
+    todo = next((todo for todo in todos if todo["id"] == todo_id), None)
+
+    if todo is None:
+        return jsonify({"error": "Todo not found"}), 404
+
+    todos.remove(todo)
+    return jsonify({"message": "Todo deleted", "todo": todo})
+
+
 if __name__ == "__main__":
     app.run(debug=True)

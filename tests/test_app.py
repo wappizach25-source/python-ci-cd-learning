@@ -56,3 +56,48 @@ def test_create_todo_without_title():
 
     assert response.status_code == 400
     assert response.get_json()["error"] == "Title is required"
+
+
+def test_update_todo_title():
+    client = app.test_client()
+    response = client.patch("/todos/1", json={"title": "Learn Docker"})
+
+    assert response.status_code == 200
+    assert response.get_json()["title"] == "Learn Docker"
+
+
+def test_update_todo_done_status():
+    client = app.test_client()
+    response = client.patch("/todos/1", json={"done": True})
+
+    assert response.status_code == 200
+    assert response.get_json()["done"] is True
+
+
+def test_update_missing_todo():
+    client = app.test_client()
+    response = client.patch("/todos/999", json={"title": "Missing"})
+
+    assert response.status_code == 404
+    assert response.get_json()["error"] == "Todo not found"
+
+
+def test_delete_todo():
+    client = app.test_client()
+    response = client.delete("/todos/1")
+
+    assert response.status_code == 200
+    assert response.get_json()["message"] == "Todo deleted"
+
+    todos_response = client.get("/todos")
+    todos_data = todos_response.get_json()
+    assert len(todos_data) == 1
+    assert todos_data[0]["id"] == 2
+
+
+def test_delete_missing_todo():
+    client = app.test_client()
+    response = client.delete("/todos/999")
+
+    assert response.status_code == 404
+    assert response.get_json()["error"] == "Todo not found"
