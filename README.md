@@ -36,6 +36,12 @@ This project is used to learn and apply:
 
 ---
 
+## Code quality checks
+
+### Format the code
+```bash
+black .
+
 ## Project structure
 
 ```text
