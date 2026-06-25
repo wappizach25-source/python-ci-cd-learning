@@ -62,3 +62,15 @@ python-ci-cd-learning/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
+## Current status
+
+Week 1 completed:
+- Project setup finished
+- Flask To-do API created
+- CRUD routes implemented
+- Automated tests added
+- Code formatting with Black added
+- Linting with Flake8 added
+
+Next step:
+- Set up GitHub Actions for CI
