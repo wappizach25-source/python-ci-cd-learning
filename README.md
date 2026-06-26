@@ -74,3 +74,4 @@ Week 1 completed:
 
 Next step:
 - Set up GitHub Actions for CI
+CI workflow successfully added in Week 2.
