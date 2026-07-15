@@ -101,6 +101,3 @@ def test_delete_missing_todo():
 
     assert response.status_code == 404
     assert response.get_json()["error"] == "Todo not found"
-
-def test_temporary_failure():
-    assert 2 + 2 == 5
